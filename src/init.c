@@ -54,9 +54,10 @@ void	init_philos(t_philo *philos, t_program *program,
 }
 
 /*
-l_fork = fork配列のi番目の要素
-r_fork = 最初の哲学者（philos[0])に対しては最後の哲学者の左のfork(forks[num_of_philos - 1])、
-	それ以外の哲学者についてはfork配列のi-1番目の要素
+for the first philosopher (philos[0]), 
+r_fork is the left fork of the last philosopher 
+(forks[num_of_philos - 1])
+Otherwise it is the i-1th element of the fork array.
 */
 void	init_forks(t_mtx *forks, int num_of_philos)
 {

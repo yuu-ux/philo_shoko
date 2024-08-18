@@ -55,13 +55,13 @@ int	ft_usleep(size_t milliseconds)
 }
 /*
 High-precision waiting
-By repeatedly calling usleep, it allows for accurate sleep in milliseconds.
-
+By repeatedly calling usleep, 
+it allows for accurate sleep in milliseconds.
 Efficient CPU usage
-The function waits in short intervals (100 microseconds) within the loop, 
+The function waits in short intervals (100 microseconds) 
+within the loop, 
 allowing other processes to interrupt 
 while still ensuring the specified time has elapsed.
-
 milliseconds(ms): 1e-3 seconds
 microseconds(us): 1e-6 seconds 
 */

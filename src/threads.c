@@ -66,7 +66,6 @@ int	thread_create(t_program *program, t_mtx *forks)
 	}
 	return (0);
 }
-
 /*
 Create a monitoring thread (observer) 
 	oversee the state of the philosophers.

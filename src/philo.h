@@ -44,11 +44,6 @@ typedef struct s_philo
 	t_mtx				*meal_mtx;
 	t_mtx				*death_mtx;
 }						t_philo;
-// num of philoをポインタにして、t_programと共有してもいいかも
-// t_philoからnum_of_philosへのアクセス: どの哲学者からでも、
-// philo->num_of_philosを介して、正しい哲学者数にアクセス可能
-// 値にアクセスする際はデリファレンスする
-// int num = *(philo->num_of_philos);
 /*
 thread: philo is a thread
 id: philo's id
@@ -66,12 +61,19 @@ r_fork: pointer to a mutex of right fork
 l_fork: pointer to a mutex of left fork
 write_mtx: pointer to a mutex for writing messages
 meal_mtx: pointer to a mutex for meals_eaten
+
+It might be a good idea to make `num_of_philos` a pointer 
+and share it with `t_program`.
+Accessing `num_of_philos` from `t_philo`: 
+any philosopher can access the correct number of philosophers 
+through `philo->num_of_philos`.
+When accessing the value, dereference it.
+int num = *(philo->num_of_philos);
 */
 
 typedef struct s_program
 {
 	bool				is_dead;
-	// int				num_of_philos;
 	t_mtx				write_mtx;
 	t_mtx				meal_mtx;
 	t_mtx				death_mtx;
@@ -104,13 +106,10 @@ void					thinking(t_philo *philo);
 // monitor.c
 int						dead_loop(t_philo *philo);
 bool					is_end_condition_met(t_philo *philo);
-// bool					check_if_all_ate(t_philo *philo);
-// bool					check_if_dead(t_philo *philos);
 bool					is_each_philo_dead(t_philo *philo, size_t time_to_die);
 bool					is_any_philo_dead(t_philo *philos);
 
 // utils.c
-// int					ft_atoi(char *str);
 long					ft_atol(const char *str);
 int						ft_usleep(size_t microseconds);
 int						ft_strlen(char *str);

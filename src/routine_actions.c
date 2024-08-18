@@ -45,10 +45,8 @@ void	eating(t_philo *philo)
 	pthread_mutex_unlock(philo->l_fork);
 	pthread_mutex_unlock(philo->r_fork);
 }
-//dead lock対策が必要？pthread_mutex_trylock
 /*
 if philo is one: sleep for time_to_die and unlock the fork
-
 Eating:
 The philosopher picks up the left fork and displays the status.
 The eating flag is set to 1, and a message "eating."
@@ -57,7 +55,6 @@ after which the philosopher's last meal time (last_meal) is updated and
 the meal count (meals_eaten) is incremented. 
 Once this is done, the mutex is unlocked.
 The philosopher waits for the duration of time_to_eat.
-
 Releasing the forks:
 The locks on the left and right forks are released
 allowing the next philosopher to use them.
