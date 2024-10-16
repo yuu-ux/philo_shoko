@@ -50,9 +50,9 @@ long	ft_atol(const char *str)
 			return (LONG_MAX);
 		if (ret < LONG_MIN / 10 || (ret == LONG_MIN / 10 && *str > '8'))
 			return (LONG_MIN);
-		ret = ret * 10 + (*str++ - '0');
+		ret = ret * 10 + (*str++ - '0') * sign;
 	}
-	return (ret * sign);
+	return (ret);
 }
 
 /* number_of_philosophers time_to_die time_to_eat time_to_sleep
